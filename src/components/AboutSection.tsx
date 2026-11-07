@@ -6,10 +6,14 @@ function AboutSection() {
       <Container>
         <Row className="align-items-center g-5">
           <Col lg={6}>
-            <div className="bg-secondary rounded-4 p-5 text-center">
-              <h2 className="display-4 fw-bold">BREW & BEAN</h2>
+            <div className="bg-warning rounded-4 p-5 text-center">
+              <h2 className="text-black display-4 fw-bold rounded-5 border border-5 border-black p-3 d-inline-block">
+                BREW & BEAN
+              </h2>
 
-              <p className="text-warning mb-0">Coffee Made With Passion</p>
+              <p className="text-black text-warning mb-0 fw-bold ">
+                Coffee Made With Passion
+              </p>
             </div>
           </Col>
 

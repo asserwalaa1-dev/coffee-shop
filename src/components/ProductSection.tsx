@@ -25,7 +25,9 @@ function ProductSection({ products }: ProductSectionProps) {
         <div className="text-center mb-5">
           <p className="text-warning text-uppercase fw-semibold">Our Menu</p>
 
-          <h2 className="display-5 fw-bold">Explore Our Products</h2>
+          <h2 className="display-5 fw-bold rounded-circle border border-warning d-inline-block px-3 py-2">
+            Explore Our Products
+          </h2>
 
           <p className="text-white-50">
             Discover our selection of coffee and treats.
@@ -58,16 +60,17 @@ function ProductSection({ products }: ProductSectionProps) {
                   key={product.id}
                   className="flex-shrink-0"
                   style={{ width: "300px", scrollSnapAlign: "start" }}>
-                  <Card className="h-100 bg-secondary text-white border-0">
+                  <Card className="h-100 bg-secondary text-white border-0 product-card">
                     <Card.Img
                       variant="top"
                       src={product.image_url}
                       alt={product.Name}
+                      className="product-card-image"
                       style={{ height: "220px", objectFit: "cover" }}
                     />
 
                     <Card.Body className="d-flex flex-column">
-                      <Card.Text className="text-warning small">
+                      <Card.Text className="text-warning fw-bold ">
                         {product.category_name}
                       </Card.Text>
 
@@ -78,9 +81,9 @@ function ProductSection({ products }: ProductSectionProps) {
                       </Card.Text>
 
                       <div className="d-flex justify-content-between align-items-center mt-auto">
-                        <strong>{product.price} EGP</strong>
-
-                        <Button variant="warning">View Details</Button>
+                        <strong className="text-warning">
+                          {product.price} EGP
+                        </strong>
                       </div>
                     </Card.Body>
                   </Card>

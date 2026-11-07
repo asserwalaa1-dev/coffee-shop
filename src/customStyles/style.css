@@ -45,3 +45,25 @@
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
 }
+
+/* Product Card Hover */
+.product-card {
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(255, 193, 7, 0.2);
+}
+
+/* Product Image Zoom */
+.product-card-image {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.08);
+}

@@ -20,14 +20,16 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
   };
 
   return (
-    <section id="beans" className="bg-black text-white py-5">
+    <section id="beans" className="bg-dark my-5 text-white py-5">
       <Container>
         <div className="text-center mb-5">
           <p className="text-warning fw-semibold text-uppercase">
             Premium Coffee Beans
           </p>
 
-          <h2 className="display-5 fw-bold">Explore Our Coffee Beans</h2>
+          <h2 className="display-5 fw-bold rounded-circle border border-warning w-50 px-3 py-2 text-cen ter mx-auto">
+            Explore Our Coffee Beans
+          </h2>
 
           <p className="text-white-50">
             Discover our selection of premium coffee beans.
@@ -60,11 +62,12 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
                   key={bean.id}
                   className="flex-shrink-0"
                   style={{ width: "300px", scrollSnapAlign: "start" }}>
-                  <Card className="h-100 bg-dark text-white border-secondary">
+                  <Card className="h-100 bg-dark text-white border-secondary product-card">
                     <Card.Img
                       variant="top"
                       src={bean.image_url}
                       alt={bean.name}
+                      className="product-card-image"
                       style={{ height: "220px", objectFit: "cover" }}
                     />
 
