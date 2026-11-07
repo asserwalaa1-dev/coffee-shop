@@ -106,8 +106,13 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
                       <Button
                         variant="warning"
                         className="w-100 mt-auto fw-semibold"
-                        href="#contact">
-                        Inquire on WhatsApp
+                        as="a"
+                        href={`https://wa.me/201099495963?text=${encodeURIComponent(
+                          `Hello, I'm interested in ${bean.name} coffee beans.`,
+                        )}`}
+                        target="_blank"
+                        rel="noreferrer">
+                        Order via WhatsApp
                       </Button>
                     </Card.Body>
                   </Card>
