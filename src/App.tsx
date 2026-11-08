@@ -35,7 +35,7 @@ function App() {
   } = useCafeInfo();
 
   return (
-    <div className="bg-dark text-white min-vh-100">
+    <div className="bg-dark text-white min-vh-100 w-100">
       <Navbar
         cafeName={cafeInfo?.Name ?? null}
         whatsappUrl={cafeInfo?.whatsapp_url ?? null}
