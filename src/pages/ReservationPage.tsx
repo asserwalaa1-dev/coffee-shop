@@ -44,8 +44,26 @@ function ReservationPage() {
       return "Please enter a valid Egyptian phone number.";
     }
 
+    if (!reservationDate) {
+      return "Please select a reservation date.";
+    }
+
     if (reservationDate < minDate) {
       return "Please select today or a future date.";
+    }
+
+    if (!reservationTime) {
+      return "Please select a reservation time.";
+    }
+
+    const [hours, minutes] = reservationTime.split(":").map(Number);
+    const selectedMinutes = hours * 60 + minutes;
+
+    const openingTime = 9 * 60;
+    const closingTime = 24 * 60;
+
+    if (selectedMinutes < openingTime || selectedMinutes >= closingTime) {
+      return "Our opening hours are from 9:00 AM to 12:00 AM.";
     }
 
     if (reservationDate === minDate) {
@@ -58,10 +76,18 @@ function ReservationPage() {
       }
     }
 
+    if (!guestsCount.trim()) {
+      return "Please enter the number of guests.";
+    }
+
     const guests = Number(guestsCount);
 
-    if (!Number.isInteger(guests) || guests < 1 || guests > 100) {
-      return "Number of guests must be between 1 and 100.";
+    if (guests > 100) {
+      return "We're sorry, but our venue can accommodate a maximum of 100 guests only.";
+    }
+
+    if (!Number.isInteger(guests) || guests < 1) {
+      return "Please enter a valid number of guests.";
     }
 
     return null;
@@ -163,7 +189,7 @@ function ReservationPage() {
                   </Alert>
                 )}
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} noValidate>
                   <Form.Group className="mb-3">
                     <Form.Label className="text-warning">Full Name</Form.Label>
 
@@ -172,8 +198,6 @@ function ReservationPage() {
                       placeholder="Enter your full name"
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
-                      required
-                      minLength={2}
                     />
                   </Form.Group>
 
@@ -187,7 +211,6 @@ function ReservationPage() {
                       placeholder="01xxxxxxxxx"
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
-                      required
                       maxLength={11}
                     />
                   </Form.Group>
@@ -204,7 +227,6 @@ function ReservationPage() {
                           min={minDate}
                           value={reservationDate}
                           onChange={(e) => setReservationDate(e.target.value)}
-                          required
                         />
                       </Form.Group>
                     </Col>
@@ -217,9 +239,10 @@ function ReservationPage() {
 
                         <Form.Control
                           type="time"
+                          min="09:00"
+                          max="23:59"
                           value={reservationTime}
                           onChange={(e) => setReservationTime(e.target.value)}
-                          required
                         />
                       </Form.Group>
                     </Col>
@@ -237,7 +260,6 @@ function ReservationPage() {
                       step="1"
                       value={guestsCount}
                       onChange={(e) => setGuestsCount(e.target.value)}
-                      required
                     />
 
                     <Form.Text className="text-white-50">
@@ -265,8 +287,7 @@ function ReservationPage() {
                   </Button>
 
                   <p className="text-white-50 text-center small mt-3 mb-0">
-                    Reservations are automatically confirmed when tables are
-                    available.
+                    Opening Hours: 9:00 AM - 12:00 AM
                   </p>
                 </Form>
               </Card.Body>
