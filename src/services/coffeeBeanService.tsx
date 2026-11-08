@@ -44,3 +44,10 @@ export async function getCoffeeBeans(): Promise<CoffeeBean[]> {
     })),
   }));
 }
+export async function getCoffeeBeanById(
+  id: number,
+): Promise<CoffeeBean | null> {
+  const coffeeBeans = await getCoffeeBeans();
+
+  return coffeeBeans.find((bean) => bean.id === id) ?? null;
+}

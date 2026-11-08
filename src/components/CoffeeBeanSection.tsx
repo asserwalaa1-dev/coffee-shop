@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Container, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import type { CoffeeBean } from "../types/coffeeBean";
 
@@ -107,7 +108,7 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
                       )}
 
                       <Button
-                        variant="warning"
+                        variant="outline-warning"
                         className="w-100 mt-auto fw-semibold"
                         as="a"
                         href={`https://wa.me/201099495963?text=${encodeURIComponent(
@@ -117,6 +118,12 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
                         rel="noreferrer">
                         Order via WhatsApp
                       </Button>
+                      {/* View Details Button */}
+                      <Link
+                        to={`/coffee-beans/${bean.id}`}
+                        className="btn bg-warning w-100 mt-3 fw-semibold">
+                        View Details
+                      </Link>
                     </Card.Body>
                   </Card>
                 </div>

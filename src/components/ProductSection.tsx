@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import type { Product } from "../types/product";
 
 interface ProductSectionProps {
@@ -60,7 +60,7 @@ function ProductSection({ products }: ProductSectionProps) {
                   key={product.id}
                   className="flex-shrink-0"
                   style={{ width: "300px", scrollSnapAlign: "start" }}>
-                  <Card className="h-100 bg-secondary text-white border-0 product-card">
+                  <Card className="h-100 bg-dark text-white border-secondary product-card">
                     <Card.Img
                       variant="top"
                       src={product.image_url}
@@ -70,7 +70,7 @@ function ProductSection({ products }: ProductSectionProps) {
                     />
 
                     <Card.Body className="d-flex flex-column">
-                      <Card.Text className="text-warning fw-bold ">
+                      <Card.Text className="text-warning fw-bold">
                         {product.category_name}
                       </Card.Text>
 
@@ -85,6 +85,12 @@ function ProductSection({ products }: ProductSectionProps) {
                           {product.price} EGP
                         </strong>
                       </div>
+
+                      <Link
+                        to={`/products/${product.id}`}
+                        className="btn bg-warning w-100 mt-3 fw-semibold">
+                        View Details
+                      </Link>
                     </Card.Body>
                   </Card>
                 </div>

@@ -11,10 +11,7 @@ function Footer({ cafeInfo }: FooterProps) {
       <Container>
         <Row className="g-4">
           <Col md={4}>
-            <h3 className="fw-bold">
-              {cafeInfo?.Name || "BREW"}{" "}
-              <span className="text-warning">& BEAN</span>
-            </h3>
+            <h3 className="fw-bold">{cafeInfo?.Name || "BREW"} </h3>
             <p className="text-white-50 mt-3">
               Your daily coffee experience. Made with passion, served with care.
             </p>

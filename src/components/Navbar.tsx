@@ -1,16 +1,11 @@
-import {
-  Container,
-  Nav,
-  Navbar as BootstrapNavbar,
-  Button,
-} from "react-bootstrap";
-
+import { Container, Nav, Navbar as BootstrapNavbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 interface NavbarProps {
   cafeName: string | null;
   whatsappUrl: string | null;
 }
 
-function Navbar({ cafeName, whatsappUrl }: NavbarProps) {
+function Navbar({ cafeName }: NavbarProps) {
   return (
     <BootstrapNavbar expand="lg" variant="dark" className="bg-dark py-3">
       <Container>
@@ -39,16 +34,12 @@ function Navbar({ cafeName, whatsappUrl }: NavbarProps) {
               },
             )}
 
-            <Button
-              as="a"
-              href={whatsappUrl || undefined}
-              target="_blank"
-              rel="noreferrer"
-              variant="warning"
-              className="fw-semibold reserve-hover"
-              disabled={!whatsappUrl}>
+            <Nav.Link
+              as={Link}
+              to="/reservation"
+              className="btn bg-warning text-dark fw-semibold reserve-hover px-3">
               Reserve a Table
-            </Button>
+            </Nav.Link>
           </Nav>
         </BootstrapNavbar.Collapse>
       </Container>
