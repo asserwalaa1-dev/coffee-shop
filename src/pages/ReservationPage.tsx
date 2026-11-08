@@ -151,7 +151,7 @@ function ReservationPage() {
       console.error("Reservation error:", error);
 
       setMessage(
-        "We couldn't complete your reservation right now. Please try again in a few moments. If the problem continues, contact us directly.",
+        error instanceof Error ? error.message : JSON.stringify(error),
       );
 
       setMessageType("danger");
