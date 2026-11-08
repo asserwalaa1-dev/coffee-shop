@@ -130,7 +130,7 @@ function ReservationPage() {
 
       if (result.reservation_status === "confirmed") {
         setMessage(
-          `Thank you, ${customerName.trim()}! Your table has been successfully reserved. We look forward to welcoming you at Brew & Bean. Your booking reference is #${result.reservation_id}.`,
+          `Thank you, ${customerName.trim()}! Your table has been successfully reserved. We look forward to welcoming you at Brew & Bean.`,
         );
 
         setMessageType("success");
