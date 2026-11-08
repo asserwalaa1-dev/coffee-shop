@@ -1,3 +1,4 @@
+
 import { useRef } from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
             Premium Coffee Beans
           </p>
 
-          <h2 className="display-5 fw-bold rounded-circle border border-warning w-50 px-3 py-2 text-cen ter mx-auto">
+          <h2 className="display-5 fw-bold rounded-circle border border-warning d-inline-block px-3 py-2 mx-auto">
             Explore Our Coffee Beans
           </h2>
 
@@ -43,39 +44,53 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
           </p>
         ) : (
           <div className="d-flex align-items-center gap-3">
-            {/* Previous Button */}
             <Button
               variant="outline-warning"
-              className="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+              className="d-none d-md-flex flex-shrink-0 rounded-circle align-items-center justify-content-center"
               style={{ width: "45px", height: "45px" }}
               onClick={() => scrollSlider("left")}
-              aria-label="Previous coffee beans">
+              aria-label="Previous coffee beans"
+            >
               &#8592;
             </Button>
 
-            {/* Coffee Beans Slider */}
             <div
               ref={sliderRef}
-              className="d-flex gap-4 overflow-auto pb-3 flex-grow-1"
-              style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none" }}>
+              className="d-flex gap-3 gap-md-4 overflow-auto pb-3 flex-grow-1"
+              style={{
+                scrollSnapType: "x mandatory",
+                scrollbarWidth: "none",
+              }}
+            >
               {coffeeBeans.map((bean) => (
                 <div
                   key={bean.id}
                   className="flex-shrink-0"
-                  style={{ width: "300px", scrollSnapAlign: "start" }}>
+                  style={{
+                    width: "min(82vw, 300px)",
+                    scrollSnapAlign: "center",
+                  }}
+                >
                   <Card className="h-100 bg-dark text-white border-secondary product-card">
                     <Card.Img
                       variant="top"
                       src={bean.image_url}
                       alt={bean.name}
                       className="product-card-image"
-                      style={{ height: "220px", objectFit: "cover" }}
+                      style={{
+                        height: "clamp(160px, 55vw, 220px)",
+                        objectFit: "cover",
+                      }}
                     />
 
                     <Card.Body className="d-flex flex-column">
-                      <Card.Title className="fw-bold">{bean.name}</Card.Title>
+                      <Card.Title className="fw-bold">
+                        {bean.name}
+                      </Card.Title>
 
-                      <p className="text-warning mb-2">{bean.origin}</p>
+                      <p className="text-warning mb-2">
+                        {bean.origin}
+                      </p>
 
                       <p className="text-white-50 small">
                         Roast: {bean.roast_level}
@@ -87,13 +102,16 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
 
                       <hr className="border-secondary" />
 
-                      <h6 className="fw-bold mb-3">Available Variants</h6>
+                      <h6 className="fw-bold mb-3">
+                        Available Variants
+                      </h6>
 
                       {bean.variants.length > 0 ? (
                         bean.variants.map((variant) => (
                           <div
                             key={variant.id}
-                            className="d-flex justify-content-between mb-2">
+                            className="d-flex justify-content-between mb-2"
+                          >
                             <span>{variant.weight} g</span>
 
                             <strong className="text-warning">
@@ -112,16 +130,18 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
                         className="w-100 mt-auto fw-semibold"
                         as="a"
                         href={`https://wa.me/201099495963?text=${encodeURIComponent(
-                          `Hello, I'm interested in ${bean.name} coffee beans.`,
+                          `Hello, I'm interested in ${bean.name} coffee beans.`
                         )}`}
                         target="_blank"
-                        rel="noreferrer">
+                        rel="noreferrer"
+                      >
                         Order via WhatsApp
                       </Button>
-                      {/* View Details Button */}
+
                       <Link
                         to={`/coffee-beans/${bean.id}`}
-                        className="btn bg-warning w-100 mt-3 fw-semibold">
+                        className="btn bg-warning w-100 mt-3 fw-semibold"
+                      >
                         View Details
                       </Link>
                     </Card.Body>
@@ -130,13 +150,13 @@ function CoffeeBeanSection({ coffeeBeans }: CoffeeBeanSectionProps) {
               ))}
             </div>
 
-            {/* Next Button */}
             <Button
               variant="outline-warning"
-              className="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+              className="d-none d-md-flex flex-shrink-0 rounded-circle align-items-center justify-content-center"
               style={{ width: "45px", height: "45px" }}
               onClick={() => scrollSlider("right")}
-              aria-label="Next coffee beans">
+              aria-label="Next coffee beans"
+            >
               &#8594;
             </Button>
           </div>
