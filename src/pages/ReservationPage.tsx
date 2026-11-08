@@ -104,8 +104,9 @@ function ReservationPage() {
 
       if (result.reservation_status === "confirmed") {
         setMessage(
-          `Your reservation has been confirmed! Reservation ID: ${result.reservation_id}`,
+          `Thank you, ${customerName.trim()}! Your table has been successfully reserved. We look forward to welcoming you at Brew & Bean. Your booking reference is #${result.reservation_id}.`,
         );
+
         setMessageType("success");
 
         setCustomerName("");
@@ -115,16 +116,18 @@ function ReservationPage() {
         setGuestsCount("2");
       } else {
         setMessage(
-          "Sorry, there are no available tables for this time. Please choose another time.",
+          "We're sorry, but all tables are currently reserved for your selected time. Please choose another date or time, and we'll be happy to welcome you.",
         );
+
         setMessageType("danger");
       }
     } catch (error) {
+      console.error("Reservation error:", error);
+
       setMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.",
+        "We couldn't complete your reservation right now. Please try again in a few moments. If the problem continues, contact us directly.",
       );
+
       setMessageType("danger");
     } finally {
       setLoading(false);
