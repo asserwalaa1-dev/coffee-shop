@@ -40,33 +40,37 @@ function ProductSection({ products }: ProductSectionProps) {
           </p>
         ) : (
           <div className="d-flex align-items-center gap-3">
-            {/* Previous Button */}
             <Button
               variant="outline-warning"
-              className="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+              className="d-none d-md-flex flex-shrink-0 rounded-circle align-items-center justify-content-center"
               style={{ width: "45px", height: "45px" }}
               onClick={() => scrollSlider("left")}
               aria-label="Previous products">
               &#8592;
             </Button>
 
-            {/* Products Slider */}
             <div
               ref={sliderRef}
-              className="d-flex gap-4 overflow-auto pb-3 flex-grow-1"
+              className="d-flex gap-3 gap-md-4 overflow-auto pb-3 flex-grow-1"
               style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none" }}>
               {products.map((product) => (
                 <div
                   key={product.id}
                   className="flex-shrink-0"
-                  style={{ width: "300px", scrollSnapAlign: "start" }}>
+                  style={{
+                    width: "min(82vw, 300px)",
+                    scrollSnapAlign: "center",
+                  }}>
                   <Card className="h-100 bg-dark text-white border-secondary product-card">
                     <Card.Img
                       variant="top"
                       src={product.image_url}
                       alt={product.Name}
                       className="product-card-image"
-                      style={{ height: "220px", objectFit: "cover" }}
+                      style={{
+                        height: "clamp(160px, 55vw, 220px)",
+                        objectFit: "cover",
+                      }}
                     />
 
                     <Card.Body className="d-flex flex-column">
@@ -97,10 +101,9 @@ function ProductSection({ products }: ProductSectionProps) {
               ))}
             </div>
 
-            {/* Next Button */}
             <Button
               variant="outline-warning"
-              className="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
+              className="d-none d-md-flex flex-shrink-0 rounded-circle align-items-center justify-content-center"
               style={{ width: "45px", height: "45px" }}
               onClick={() => scrollSlider("right")}
               aria-label="Next products">
