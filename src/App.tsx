@@ -23,6 +23,8 @@ import AdminProtectedRoute from "./admin/components/AdminProtectedRoute";
 import AdminForgotPasswordPage from "./admin/pages/AdminForgotPasswordPage";
 import AdminResetPasswordPage from "./admin/pages/AdminResetPassword";
 import AdminProductsPage from "./admin/pages/AdminProductsPage";
+import AdminCoffeeBeansPage from "./admin/pages/AdminCoffeeBeansPage";
+import AdminCafeInfoPage from "./admin/pages/AdminCafeInfoPage";
 
 function App() {
   const {
@@ -106,6 +108,10 @@ function App() {
               <Route index element={<AdminDashboardPage />} />
 
               <Route path="products" element={<AdminProductsPage />} />
+
+              <Route path="coffee-beans" element={<AdminCoffeeBeansPage />} />
+
+              <Route path="cafe-info" element={<AdminCafeInfoPage />} />
             </Route>
           </Route>
         </Routes>

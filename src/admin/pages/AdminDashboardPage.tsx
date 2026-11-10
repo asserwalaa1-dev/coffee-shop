@@ -210,12 +210,24 @@ function AdminDashboardPage() {
 
   return (
     <Container className="py-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
         <h2 className="mb-0">Admin Dashboard</h2>
 
-        <Button variant="success" onClick={() => navigate("/admin/products")}>
-          Add Product
-        </Button>
+        <div className="d-flex gap-2 flex-wrap">
+          <Button variant="success" onClick={() => navigate("/admin/products")}>
+            Add Product
+          </Button>
+
+          <Button
+            variant="warning"
+            onClick={() => navigate("/admin/coffee-beans")}>
+            Coffee Beans
+          </Button>
+
+          <Button variant="danger" onClick={() => navigate("/admin/cafe-info")}>
+            Cafe Info
+          </Button>
+        </div>
       </div>
       {actionMessage && (
         <Alert
