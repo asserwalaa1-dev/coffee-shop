@@ -15,6 +15,15 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CoffeeBeanDetailsPage from "./pages/CoffeeBeanDetailsPage";
 import ReservationPage from "./pages/ReservationPage";
 
+// Admin Dashboard
+import AdminLoginPage from "./admin/pages/AdminLoginPage";
+import AdminDashboardPage from "./admin/pages/AdminDashboardPage";
+import AdminLayout from "./admin/layouts/AdminLayout";
+import AdminProtectedRoute from "./admin/components/AdminProtectedRoute";
+import AdminForgotPasswordPage from "./admin/pages/AdminForgotPasswordPage";
+import AdminResetPasswordPage from "./admin/pages/AdminResetPassword";
+import AdminProductsPage from "./admin/pages/AdminProductsPage";
+
 function App() {
   const {
     products,
@@ -77,6 +86,28 @@ function App() {
           <Route path="/coffee-beans/:id" element={<CoffeeBeanDetailsPage />} />
 
           <Route path="/reservation" element={<ReservationPage />} />
+
+          {/* Admin Authentication */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+
+          <Route
+            path="/admin/forgot-password"
+            element={<AdminForgotPasswordPage />}
+          />
+
+          <Route
+            path="/admin/reset-password"
+            element={<AdminResetPasswordPage />}
+          />
+
+          {/* Protected Admin Routes */}
+          <Route element={<AdminProtectedRoute />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboardPage />} />
+
+              <Route path="products" element={<AdminProductsPage />} />
+            </Route>
+          </Route>
         </Routes>
       </main>
 
